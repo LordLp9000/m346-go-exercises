@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"os"
 	"time"
 )
 
@@ -11,10 +12,14 @@ func main() {
 	var when = time.Now()
 
 	// TODO: use fmt.Fprintln instead!
-	fmt.Println("the dice shows", eyes, "eyes")
+	eyesFile, _ := os.Create("eyes.txt")
+	defer eyesFile.Close()
+	fmt.Fprintln(eyesFile, "the dice shows", eyes, "eyes")
 
 	// TODO: use fmt.Fprintln instead!
-	fmt.Println("the dice was rolled at", when)
+	diceFile, _ := os.Create("dice.log")
+	defer diceFile.Close()
+	fmt.Fprintln(diceFile, "the dice was rolled at", when)
 
 	// TODO: how to write the output into eyes.txt and dice.log?
 	// go run ex3/main.go TODO
