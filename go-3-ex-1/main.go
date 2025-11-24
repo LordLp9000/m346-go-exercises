@@ -22,6 +22,31 @@ func outputWithZodiacSign(p Person) {
 
 	// TODO: Assign proper value to zodiacSign using if/else branching.
 	// NOTE: The runes are defined above as constants.
+	if (p.Month == 3 && p.Day >= 21) || (p.Month == 4 && p.Day <= 20) {
+		zodiacSign = Aries // Widder: 21.03 - 20.04
+	} else if (p.Month == 4 && p.Day >= 21) || (p.Month == 5 && p.Day <= 20) {
+		zodiacSign = Taurus // Stier: 21.04 - 20.05
+	} else if (p.Month == 5 && p.Day >= 21) || (p.Month == 6 && p.Day <= 21) {
+		zodiacSign = Gemini // Zwillinge: 21.05 - 21.06
+	} else if (p.Month == 6 && p.Day >= 22) || (p.Month == 7 && p.Day <= 22) {
+		zodiacSign = Cancer // Krebs: 22.06 - 22.07
+	} else if (p.Month == 7 && p.Day >= 23) || (p.Month == 8 && p.Day <= 23) {
+		zodiacSign = Leo // Löwe: 23.07 - 23.08
+	} else if (p.Month == 8 && p.Day >= 24) || (p.Month == 9 && p.Day <= 23) {
+		zodiacSign = Virgo // Jungfrau: 24.08 - 23.09
+	} else if (p.Month == 9 && p.Day >= 24) || (p.Month == 10 && p.Day <= 23) {
+		zodiacSign = Libra // Waage: 24.09 - 23.10
+	} else if (p.Month == 10 && p.Day >= 24) || (p.Month == 11 && p.Day <= 22) {
+		zodiacSign = Scorpius // Skorpion: 24.10 - 22.11
+	} else if (p.Month == 11 && p.Day >= 23) || (p.Month == 12 && p.Day <= 21) {
+		zodiacSign = Sagittarius // Schütze: 23.11 - 21.12
+	} else if (p.Month == 12 && p.Day >= 22) || (p.Month == 1 && p.Day <= 20) {
+		zodiacSign = Capricornus // Steinbock: 22.12 - 20.01
+	} else if (p.Month == 1 && p.Day >= 21) || (p.Month == 2 && p.Day <= 19) {
+		zodiacSign = Aquarius // Wassermann: 21.01 - 19.02
+	} else if (p.Month == 2 && p.Day >= 20) || (p.Month == 3 && p.Day <= 20) {
+		zodiacSign = Pisces // Fische: 20.02 - 20.03
+	}
 
 	fmt.Printf("%s %s, born on %02d.%02d.%04d, has the zodiac sign %c.\n",
 		p.FirstName, p.LastName, p.Day, p.Month, p.Year, zodiacSign)
@@ -54,4 +79,13 @@ func main() {
 	outputWithZodiacSign(rick)
 	outputWithZodiacSign(edsger)
 	outputWithZodiacSign(alan)
+
+	// Additional people
+	laurent := Person{FullName{"Laurent", "Scherrer"}, BirthDate{9, 4, 2005}}
+	steve := Person{FullName{"Steve", "Jobs"}, BirthDate{24, 2, 1955}}
+	ada := Person{FullName{"Ada", "Lovelace"}, BirthDate{10, 12, 1815}}
+
+	outputWithZodiacSign(laurent)
+	outputWithZodiacSign(steve)
+	outputWithZodiacSign(ada)
 }
