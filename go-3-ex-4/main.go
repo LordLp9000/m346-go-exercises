@@ -24,7 +24,26 @@ func main() {
 	ranks := []rune{Six, Seven, Eight, Nine, Ten, Jack, Queen, King, Ace}
 
 	// TODO: Loop over suits and ranks to output all combinations.
+	for _, rank := range ranks {
+		for _, suit := range suits {
+			fmt.Printf("%c%c\t", suit, rank)
+		}
+		fmt.Println()
+	}
 
-	// TODO: delete this line afterwards
-	fmt.Println(suits, ranks)
+	fmt.Println("\n--- Bonus: Map Version ---")
+	// Bonus: Create a map with cards organized by suit
+	cards := make(map[rune][]string)
+	for _, suit := range suits {
+		cards[suit] = []string{}
+		for _, rank := range ranks {
+			card := fmt.Sprintf("%c%c", suit, rank)
+			cards[suit] = append(cards[suit], card)
+		}
+	}
+
+	// Output the map
+	for suit, cardList := range cards {
+		fmt.Printf("%c: %v\n", suit, cardList)
+	}
 }
